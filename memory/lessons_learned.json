@@ -1,0 +1,44 @@
+[
+  {
+    "id": "L1",
+    "check_id": "C2",
+    "rule": "Only include factual details that appear in the provided reference notes; do not add any numbers, dates, prices, or statistics not explicitly given.",
+    "created": "2026-11-07T11:26:40",
+    "failures_at_creation": 1
+  },
+  {
+    "id": "L2",
+    "check_id": "C5",
+    "rule": "Include a brief everyday analogy (e.g., comparing RAG to a library’s catalog) to clarify the concept for students.",
+    "created": "2026-11-07T11:26:41",
+    "failures_at_creation": 1
+  },
+  {
+    "id": "L3",
+    "check_id": "C2",
+    "rule": "Only use facts that appear verbatim in the reference notes; do not add any numbers, dates, prices, or statistics not explicitly provided.",
+    "created": "2026-11-07T12:07:10",
+    "failures_at_creation": 3
+  },
+  {
+    "id": "L4",
+    "check_id": "C5",
+    "rule": "Add at least two worked examples, one from everyday Indian life, and include a simple analogy to illustrate RAG.",
+    "created": "2026-11-07T12:07:11",
+    "failures_at_creation": 3
+  },
+  {
+    "id": "L5",
+    "check_id": "C3",
+    "rule": "Explain every technical term the first time it appears and use only simple, everyday words; avoid idioms, slang, and unexplained abbreviations.",
+    "created": "2026-11-07T12:07:19",
+    "failures_at_creation": 2
+  },
+  {
+    "id": "L6",
+    "check_id": "C1",
+    "rule": "Ensure the lesson explicitly defines the topic, explains its importance, and describes its functioning with clear, real‑world examples.",
+    "created": "2026-11-07T12:07:20",
+    "failures_at_creation": 1
+  }
+]

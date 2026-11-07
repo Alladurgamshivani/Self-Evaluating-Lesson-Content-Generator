@@ -1,0 +1,112 @@
+{
+  "state": {
+    "topic": "Introduction to RAG",
+    "run_id": "20261107-140503",
+    "max_retries": 2,
+    "memory_rules": [
+      "Add at least two worked examples, one from everyday Indian life, and include a simple analogy to illustrate RAG.",
+      "Only use facts that appear verbatim in the reference notes; do not add any numbers, dates, prices, or statistics not explicitly provided.",
+      "Include a brief everyday analogy (e.g., comparing RAG to a library’s catalog) to clarify the concept for students.",
+      "Only include factual details that appear in the provided reference notes; do not add any numbers, dates, prices, or statistics not explicitly given.",
+      "Explain every technical term the first time it appears and use only simple, everyday words; avoid idioms, slang, and unexplained abbreviations.",
+      "Ensure the lesson explicitly defines the topic, explains its importance, and describes its functioning with clear, real‑world examples."
+    ],
+    "attempts": [
+      {
+        "attempt": 1,
+        "lesson": "# Understanding Retrieval-Augmented Generation\n\n## Hook\n\nThink about a school test.\nImagine you are taking a closed-book test.\nYou must answer every question from your memory alone.\nIf you forget a small detail, you might make a guess.\nNow, imagine you are taking an open-book test.\nYou can look at your textbook to find the exact facts.\nThen, you can write a correct answer.\nThis simple method helps you make fewer mistakes.\nComputer programs can also use this helpful method to give better answers.\n\n## What Is It?\n\nRAG stands for Retrieval-Augmented Generation.\nResearchers introduced this term in a 2020 research paper.\nLet us break down the three words:\n- \"Retrieval\" means finding the right information from an outside source.\n- \"Augmented\" means making something better by adding new information.\n- \"Generation\" means producing text or writing an answer.\n\nA large language model (LLM) is a computer program that reads and writes text.\nIn simple terms, RAG finds helpful facts from outside documents.\nIt adds those facts to the input text.\nThen, it lets the large language model (LLM) write the answer using those facts.\n\nLet us use an analogy of a library catalog.\nWhen you visit a huge library, you do not read every single book.\nInstead, you check the library catalog to find the exact book.\nYou pull out that book, read the right page, and write your answer.\nRAG does the exact same thing for computer programs.\n\n## Why It Matters\n\nAn LLM is powerful, but it has clear limits.\nFirst, an LLM only knows what was in its training data.\nThis training data stops at a cutoff date.\nBecause of this cutoff date, an LLM does not know about newer events.\nSecond, an LLM has not seen private documents unless someone gives the documents to it.\n\nThird, an LLM can suffer from hallucination.\nHallucination means an LLM produces text that sounds confident but is false or made up.\nRAG reduces hallucination by giving the model real source text to answer from.\nHowever, RAG does not remove hallucination completely.\n\nFourth, RAG makes updating knowledge very fast.\nTo update a RAG system, you only update the documents in the knowledge base.\nYou do not need to retrain the model.\nIn RAG, the model's weights are not changed.\nThe model's weights mean the internal math settings that guide how it works.\nRAG is not training, and RAG is not fine-tuning.\nUpdating documents is cheaper and faster than retraining the model.\nFinally, RAG can show which source passages were used.\nThis allows people to read the sources and verify the answer.\n\n## How It Works\n\n### Key words\nBefore we look at the steps, let us understand these key words:\n- A prompt is the text that is sent to an LLM as its input.\n- A chunk is a small piece of a document, such as a few paragraphs.\n- An embedding is a list of numbers that represents the meaning of a piece of text. Texts with similar meaning have embeddings that are close to each other.\n- A vector database is a storage tool that holds embeddings and quickly finds the most similar ones.\n\n### The steps\n1. A person loads documents ahead of time.\n2. The system splits each document into small pieces called chunks.\n3. The system converts each chunk into an embedding.\n4. The system stores these embeddings in a vector database.\n5. Later, a user writes a question.\n6. The system converts the user's question into an embedding.\n7. The system searches the vector database for chunks with the most similar embeddings. This step is retrieval.\n8. The system puts those retrieved chunks and the question together into a prompt. This step is augmentation.\n9. The LLM reads the complete prompt and writes the final answer. This step is generation.\n\n## Example\n\n### Example 1: An Indian college chatbot\nImagine a college called Sunrise College.\nSunrise College has a rulebook about exam forms and dates.\nA student wants to know the last date to submit their exam form.\nThe student types the question on the college website.\nThe RAG system does not force the LLM to guess from memory.\nInstead, the system searches the college rulebook in its vector database.\nIt retrieves the exact chunk about the exam form date.\nThe system puts that chunk into the prompt with the student's question.\nThe LLM reads the chunk and generates a clear answer.\nThe answer also lists the rulebook page so the student can verify it.\n\n### Example 2: A clinic helper\nImagine a small medical clinic called Care Clinic.\nCare Clinic has its own private notes on rare illnesses.\nAn LLM has never seen these private notes.\nA doctor types a question about a rare illness into the clinic tool.\nThe system searches the clinic's vector database.\nIt finds the chunks from the private notes that match the doctor's question.\nIt adds these chunks to the prompt.\nThe LLM reads the prompt and writes a helpful summary for the doctor.\n\n### An honest limitation\nRAG is very useful, but it has limits.\nRetrieval quality matters most of all.\nIf retrieval returns the wrong or incomplete chunks, the answer will probably be wrong or incomplete.\nAlso, chunk size matters.\nChunks that are too small lose context.\nChunks that are too large add noise and cost more.\nIn addition, the LLM can still misread or ignore the retrieved text.\nBecause of these limits, people must always test a RAG system before using it.\nAlso, RAG is not the same as web search.\nRAG usually searches a chosen set of documents.\n\n## Recap\n\n- RAG stands for Retrieval-Augmented Generation.\n- It retrieves facts from outside documents, adds them to a prompt, and lets an LLM generate an answer.\n- RAG changes only the prompt input, not the model's weights.\n- It reduces hallucination and lets users see the source passages to verify facts.\n- Updating documents in a RAG system is faster and cheaper than retraining an LLM.\n- If retrieval finds the wrong chunks, the final answer will probably be wrong.\n\n## Check Yourself\n\n1. What does the term hallucination mean when an LLM writes text?\n2. Are the weights of an LLM changed during RAG?\n3. What will probably happen to the answer if retrieval returns wrong or incomplete chunks?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "The lesson thoroughly explains what RAG is, why it matters, and how it works with complete details.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": true,
+              "reason": "All factual statements are accurate and strictly supported by the reference notes without inventing facts.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 10.1 words; long sentences are 0%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": true,
+              "reason": "The lesson includes two simple analogies (open-book exam and library catalog) and two worked examples, including one from Indian daily life (an Indian college exam form chatbot).",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 6 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 983 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": true,
+          "failed_ids": [],
+          "metrics": {
+            "unexplained_terms": [],
+            "sentences": 97,
+            "avg_words_per_sentence": 10.1,
+            "long_sentences": 0,
+            "long_share": 0.0,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 6,
+            "questions": 3,
+            "words": 983
+          },
+          "evaluator_error": false
+        }
+      }
+    ],
+    "rejection_log": [],
+    "retry_count": 0,
+    "final_lesson": "# Understanding Retrieval-Augmented Generation\n\n## Hook\n\nThink about a school test.\nImagine you are taking a closed-book test.\nYou must answer every question from your memory alone.\nIf you forget a small detail, you might make a guess.\nNow, imagine you are taking an open-book test.\nYou can look at your textbook to find the exact facts.\nThen, you can write a correct answer.\nThis simple method helps you make fewer mistakes.\nComputer programs can also use this helpful method to give better answers.\n\n## What Is It?\n\nRAG stands for Retrieval-Augmented Generation.\nResearchers introduced this term in a 2020 research paper.\nLet us break down the three words:\n- \"Retrieval\" means finding the right information from an outside source.\n- \"Augmented\" means making something better by adding new information.\n- \"Generation\" means producing text or writing an answer.\n\nA large language model (LLM) is a computer program that reads and writes text.\nIn simple terms, RAG finds helpful facts from outside documents.\nIt adds those facts to the input text.\nThen, it lets the large language model (LLM) write the answer using those facts.\n\nLet us use an analogy of a library catalog.\nWhen you visit a huge library, you do not read every single book.\nInstead, you check the library catalog to find the exact book.\nYou pull out that book, read the right page, and write your answer.\nRAG does the exact same thing for computer programs.\n\n## Why It Matters\n\nAn LLM is powerful, but it has clear limits.\nFirst, an LLM only knows what was in its training data.\nThis training data stops at a cutoff date.\nBecause of this cutoff date, an LLM does not know about newer events.\nSecond, an LLM has not seen private documents unless someone gives the documents to it.\n\nThird, an LLM can suffer from hallucination.\nHallucination means an LLM produces text that sounds confident but is false or made up.\nRAG reduces hallucination by giving the model real source text to answer from.\nHowever, RAG does not remove hallucination completely.\n\nFourth, RAG makes updating knowledge very fast.\nTo update a RAG system, you only update the documents in the knowledge base.\nYou do not need to retrain the model.\nIn RAG, the model's weights are not changed.\nThe model's weights mean the internal math settings that guide how it works.\nRAG is not training, and RAG is not fine-tuning.\nUpdating documents is cheaper and faster than retraining the model.\nFinally, RAG can show which source passages were used.\nThis allows people to read the sources and verify the answer.\n\n## How It Works\n\n### Key words\nBefore we look at the steps, let us understand these key words:\n- A prompt is the text that is sent to an LLM as its input.\n- A chunk is a small piece of a document, such as a few paragraphs.\n- An embedding is a list of numbers that represents the meaning of a piece of text. Texts with similar meaning have embeddings that are close to each other.\n- A vector database is a storage tool that holds embeddings and quickly finds the most similar ones.\n\n### The steps\n1. A person loads documents ahead of time.\n2. The system splits each document into small pieces called chunks.\n3. The system converts each chunk into an embedding.\n4. The system stores these embeddings in a vector database.\n5. Later, a user writes a question.\n6. The system converts the user's question into an embedding.\n7. The system searches the vector database for chunks with the most similar embeddings. This step is retrieval.\n8. The system puts those retrieved chunks and the question together into a prompt. This step is augmentation.\n9. The LLM reads the complete prompt and writes the final answer. This step is generation.\n\n## Example\n\n### Example 1: An Indian college chatbot\nImagine a college called Sunrise College.\nSunrise College has a rulebook about exam forms and dates.\nA student wants to know the last date to submit their exam form.\nThe student types the question on the college website.\nThe RAG system does not force the LLM to guess from memory.\nInstead, the system searches the college rulebook in its vector database.\nIt retrieves the exact chunk about the exam form date.\nThe system puts that chunk into the prompt with the student's question.\nThe LLM reads the chunk and generates a clear answer.\nThe answer also lists the rulebook page so the student can verify it.\n\n### Example 2: A clinic helper\nImagine a small medical clinic called Care Clinic.\nCare Clinic has its own private notes on rare illnesses.\nAn LLM has never seen these private notes.\nA doctor types a question about a rare illness into the clinic tool.\nThe system searches the clinic's vector database.\nIt finds the chunks from the private notes that match the doctor's question.\nIt adds these chunks to the prompt.\nThe LLM reads the prompt and writes a helpful summary for the doctor.\n\n### An honest limitation\nRAG is very useful, but it has limits.\nRetrieval quality matters most of all.\nIf retrieval returns the wrong or incomplete chunks, the answer will probably be wrong or incomplete.\nAlso, chunk size matters.\nChunks that are too small lose context.\nChunks that are too large add noise and cost more.\nIn addition, the LLM can still misread or ignore the retrieved text.\nBecause of these limits, people must always test a RAG system before using it.\nAlso, RAG is not the same as web search.\nRAG usually searches a chosen set of documents.\n\n## Recap\n\n- RAG stands for Retrieval-Augmented Generation.\n- It retrieves facts from outside documents, adds them to a prompt, and lets an LLM generate an answer.\n- RAG changes only the prompt input, not the model's weights.\n- It reduces hallucination and lets users see the source passages to verify facts.\n- Updating documents in a RAG system is faster and cheaper than retraining an LLM.\n- If retrieval finds the wrong chunks, the final answer will probably be wrong.\n\n## Check Yourself\n\n1. What does the term hallucination mean when an LLM writes text?\n2. Are the weights of an LLM changed during RAG?\n3. What will probably happen to the answer if retrieval returns wrong or incomplete chunks?\n",
+    "status": "PASSED"
+  },
+  "usage": {
+    "calls": 2,
+    "prompt_tokens": 4416,
+    "completion_tokens": 1697
+  }
+}

@@ -1,0 +1,340 @@
+{
+  "state": {
+    "topic": "Introduction to RAG",
+    "run_id": "20261107-120526",
+    "max_retries": 2,
+    "memory_rules": [
+      "Include a brief everyday analogy (e.g., comparing RAG to a library’s catalog) to clarify the concept for students.",
+      "Only include factual details that appear in the provided reference notes; do not add any numbers, dates, prices, or statistics not explicitly given."
+    ],
+    "attempts": [
+      {
+        "attempt": 1,
+        "lesson": "# Introduction to Retrieval‑Augmented Generation (RAG)\n\n## Hook  \nImagine you ask a friend about the latest exam pattern, but your friend only remembers what he learned last year. He guesses, but might be wrong.  \nWhat if your friend could look up the newest syllabus right now and give you the exact answer?\n\n## What Is It?  \nRetrieval‑Augmented Generation, or RAG, is a way to help a computer answer questions better.  \nRAG first finds useful information from a set of documents.  \nIt then gives that information to a large language model (LLM).  \nThe LLM writes an answer using the fresh information.  \nThe model’s internal knowledge does not change.\n\n## Why It Matters  \nAn LLM only knows what was in its training data.  \nThat data stops at a certain date, so it misses new events.  \nAlso, it never reads a private report unless we give it.  \nWhen an LLM makes up facts, it is called hallucination.  \nRAG reduces hallucination by feeding real text to the model.  \nUpdating the documents in RAG is cheaper and faster than retraining the model.  \nRAG can also show which parts of the documents it used, so people can check the answer.\n\n## How It Works  \n### Key words  \n* **chunk** – a small part of a document, like a few paragraphs.  \n* **embedding** – a list of numbers that represents the meaning of a chunk.  \n* **vector database** – a special storage that keeps embeddings and can find the most similar ones quickly.  \n* **prompt** – the text that is sent to the LLM as its input.\n\n1. **Indexing**  \n   Load all documents you want the system to use.  \n   Split each document into chunks.  \n   Convert each chunk into an embedding.  \n   Store every embedding in the vector database.\n\n2. **Query time**  \n   Take the user’s question.  \n   Create an embedding for the question.  \n   Search the vector database for chunks that are most similar to the question.  \n   Take the top chunks and put them together with the question to form a prompt.  \n   Send this prompt to the LLM.  \n   The LLM writes an answer based on the prompt.\n\n3. **Answer**  \n   The LLM outputs a response.  \n   The system can also display the chunks that were used, so the user can verify the answer.\n\n## Example  \n**Example 1 – Everyday Indian life**  \nImagine a student named Aarav who wants to know the new pattern for his engineering entrance exam.  \nHe asks a RAG system.  \nThe system searches a set of recent exam papers stored in its database.  \nIt finds a chunk that says: “The exam will now have 80 multiple‑choice questions.”  \nThe LLM uses that chunk to answer: “The new pattern has 80 questions.”  \nAarav can read the chunk to confirm the answer.  \nThis is faster than searching the internet himself.\n\n**Example 2 – Simple analogy**  \nThink of RAG like a library.  \nThe library has many books (documents).  \nWhen you ask a librarian a question, the librarian first looks up the books that might contain the answer (retrieval).  \nShe then reads the relevant pages and tells you the answer (generation).  \nThe librarian’s knowledge base does not change; she only uses the books that are in the library.\n\n**Limitation**  \nIf the retrieved chunks are wrong or missing, the answer will likely be wrong or incomplete.  \nRetrieval quality is the most important part of a RAG system.\n\n## Recap  \n- RAG adds fresh information to a language model’s prompt.  \n- It uses a vector database to find relevant text quickly.  \n- The model’s internal weights stay unchanged.  \n- RAG reduces hallucination and is easier to update.  \n- The system can show which chunks were used for verification.\n\n## Check Yourself  \n1. What does RAG do before the language model writes an answer?  \n2. Why is updating documents in RAG cheaper than retraining a model?  \n3. What is a limitation of a RAG system?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "The lesson clearly explains what RAG is, why it matters, and how it works with real content.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": false,
+              "reason": "[llm] \"The exam will now have 80 multiple‑choice questions.\" is an invented specific fact not supported by the reference notes, violating factual accuracy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 9.9 words; long sentences are 0%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": true,
+              "reason": "Includes two concrete examples: one from everyday Indian life and one simple analogy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 5 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 585 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C2"
+          ],
+          "metrics": {
+            "unexplained_terms": [],
+            "sentences": 59,
+            "avg_words_per_sentence": 9.9,
+            "long_sentences": 0,
+            "long_share": 0.0,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 5,
+            "questions": 3,
+            "words": 585
+          },
+          "evaluator_error": false
+        }
+      },
+      {
+        "attempt": 2,
+        "lesson": "\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": false,
+              "reason": "[llm] Lesson lacks explanation of what, why, how.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": false,
+              "reason": "[llm] No factual statements to verify; content missing.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": false,
+              "reason": "[llm] No terms to explain; content missing.",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": false,
+              "reason": "[code] No readable sentences found.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": false,
+              "reason": "[llm] No examples provided.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": false,
+              "reason": "[code] Missing or out-of-order section(s): 'Hook', 'What Is It?', 'Why It Matters', 'How It Works', 'Example', 'Recap', 'Check Yourself'. | [llm] Sections missing; no flow.",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": false,
+              "reason": "[code] There is no recap section; there is no check yourself section.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": false,
+              "reason": "[code] Lesson is too short: 0 words (minimum 500).",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ],
+          "metrics": {
+            "unexplained_terms": [],
+            "headings_found": [],
+            "recap_points": 0,
+            "questions": 0,
+            "words": 0
+          },
+          "evaluator_error": false
+        }
+      },
+      {
+        "attempt": 3,
+        "lesson": "# Introduction to Retrieval-Augmented Generation\n\n## Hook\nImagine you are studying for a college exam. You have many notes, but you forget where a key fact is. How can you find it quickly?\n\n## What Is It?\nRetrieval-Augmented Generation, or RAG, is a way to get fresh information for a language model.  \nRAG first looks up useful text. Then it adds that text to the model’s question.  \nFinally, the model writes an answer using the new text.  \nThe model’s internal rules stay unchanged. RAG only changes the input.\n\n## Why It Matters\nLanguage models learn from data they were trained on.  \nTheir knowledge stops at a certain date.  \nThey cannot read private documents unless you give them the text.  \nSometimes they make up facts, a problem called hallucination.  \nRAG reduces hallucination because the model reads real passages.  \nUpdating a RAG system is cheaper than retraining the model.  \nUsers can see which passages the model used, so they can check the answer.\n\n## How It Works\n### Key words\n* **chunk** – a small part of a document.  \n* **embedding** – a list of numbers that shows a text’s meaning.  \n* **vector database** – a place that stores embeddings and finds similar ones.  \n* **prompt** – the text sent to a language model.\n\n1. **Prepare the documents**.  \n   Load all documents into the system.  \n   Example: a teacher uploads all lecture slides.\n\n2. **Split into chunks**.  \n   Cut each document into small pieces.  \n   Each chunk is a few paragraphs.  \n   This makes it easier to find relevant parts.\n\n3. **Create embeddings**.  \n   Convert each chunk into a list of numbers.  \n   Similar meaning gives similar numbers.  \n   The model that makes embeddings is not changed.\n\n4. **Store in vector database**.  \n   Put every embedding into the database.  \n   The database can quickly search for the closest embeddings.\n\n5. **Ask a question**.  \n   When a user types a question, convert it into an embedding.  \n   Search the database for chunks that match the question.\n\n6. **Build the prompt**.  \n   Combine the user’s question with the retrieved chunks.  \n   This is the prompt that goes to the language model.\n\n7. **Generate the answer**.  \n   The language model reads the prompt.  \n   It writes an answer using the supplied chunks.  \n   The model’s weights stay the same.\n\n## Example\n### Everyday Indian Life  \nImagine a student named Arjun.  \nArjun wants to know the latest exam pattern for his college.  \nHe uploads the college’s exam handbook to the RAG system.  \nWhen he asks, “What is the new exam pattern?” the system finds the relevant page.  \nArjun receives an answer that cites the exact page.  \nIf the handbook changes, Arjun only updates the document.  \nThe model does not need retraining.\n\n### Local Shop  \nA shop owner wants to know how many items are in stock.  \nHe stores all inventory lists in the RAG system.  \nWhen a customer asks, “How many red shirts are left?” the system finds the correct list.  \nThe shop owner gets a quick answer with the source line.  \nIf new stock arrives, he updates the list, not the model.\n\n### Limitation  \nIf the system pulls the wrong chunk, the answer will be wrong.  \nThe quality of retrieval is very important.\n\n## Recap\n* RAG adds fresh text to a language model’s question.  \n* It does not change the model’s internal rules.  \n* A vector database stores embeddings of text chunks.  \n* Retrieval finds the best chunks for a question.  \n* The prompt includes the question and retrieved chunks.  \n* The model writes an answer using that prompt.\n\n## Check Yourself\n1. What does RAG stand for?  \n2. Does RAG change the model’s weights?  \n3. Which part of the system stores embeddings?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "Lesson includes sections explaining what RAG is, why it matters, and how it works with examples.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": true,
+              "reason": "All factual statements align with reference notes; no invented facts or unsupported claims.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": false,
+              "reason": "[llm] The term 'retrieval' is used without prior explanation.",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 7.8 words; long sentences are 0%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": false,
+              "reason": "[llm] The lesson contains no analogy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 6 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 540 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C3",
+            "C5"
+          ],
+          "metrics": {
+            "unexplained_terms": [],
+            "sentences": 69,
+            "avg_words_per_sentence": 7.8,
+            "long_sentences": 0,
+            "long_share": 0.0,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 6,
+            "questions": 3,
+            "words": 540
+          },
+          "evaluator_error": false
+        }
+      }
+    ],
+    "rejection_log": [
+      {
+        "attempt": 1,
+        "failed": [
+          {
+            "id": "C2",
+            "name": "Accurate and grounded",
+            "reason": "[llm] \"The exam will now have 80 multiple‑choice questions.\" is an invented specific fact not supported by the reference notes, violating factual accuracy."
+          }
+        ],
+        "what_changed": "Changes made after failing: C2. Removed or replaced: # Introduction to Retrieval‑Augmented Generation (RAG) | ## Hook"
+      },
+      {
+        "attempt": 2,
+        "failed": [
+          {
+            "id": "C1",
+            "name": "Covers the key points",
+            "reason": "[llm] Lesson lacks explanation of what, why, how."
+          },
+          {
+            "id": "C2",
+            "name": "Accurate and grounded",
+            "reason": "[llm] No factual statements to verify; content missing."
+          },
+          {
+            "id": "C3",
+            "name": "No unexplained jargon, simple words",
+            "reason": "[llm] No terms to explain; content missing."
+          },
+          {
+            "id": "C4",
+            "name": "Short, easy sentences",
+            "reason": "[code] No readable sentences found."
+          },
+          {
+            "id": "C5",
+            "name": "Teaches by example",
+            "reason": "[llm] No examples provided."
+          },
+          {
+            "id": "C6",
+            "name": "Coherent teaching flow",
+            "reason": "[code] Missing or out-of-order section(s): 'Hook', 'What Is It?', 'Why It Matters', 'How It Works', 'Example', 'Recap', 'Check Yourself'. | [llm] Sections missing; no flow."
+          },
+          {
+            "id": "C7",
+            "name": "Recap and self-check",
+            "reason": "[code] There is no recap section; there is no check yourself section."
+          },
+          {
+            "id": "C8",
+            "name": "Right length",
+            "reason": "[code] Lesson is too short: 0 words (minimum 500)."
+          }
+        ],
+        "what_changed": "Changes made after failing: C1, C2, C3, C4, C5, C6, C7, C8. Added or updated: # Introduction to Retrieval-Augmented Generation | ## Hook"
+      }
+    ],
+    "retry_count": 2,
+    "final_lesson": "# Introduction to Retrieval‑Augmented Generation (RAG)\n\n## Hook  \nImagine you ask a friend about the latest exam pattern, but your friend only remembers what he learned last year. He guesses, but might be wrong.  \nWhat if your friend could look up the newest syllabus right now and give you the exact answer?\n\n## What Is It?  \nRetrieval‑Augmented Generation, or RAG, is a way to help a computer answer questions better.  \nRAG first finds useful information from a set of documents.  \nIt then gives that information to a large language model (LLM).  \nThe LLM writes an answer using the fresh information.  \nThe model’s internal knowledge does not change.\n\n## Why It Matters  \nAn LLM only knows what was in its training data.  \nThat data stops at a certain date, so it misses new events.  \nAlso, it never reads a private report unless we give it.  \nWhen an LLM makes up facts, it is called hallucination.  \nRAG reduces hallucination by feeding real text to the model.  \nUpdating the documents in RAG is cheaper and faster than retraining the model.  \nRAG can also show which parts of the documents it used, so people can check the answer.\n\n## How It Works  \n### Key words  \n* **chunk** – a small part of a document, like a few paragraphs.  \n* **embedding** – a list of numbers that represents the meaning of a chunk.  \n* **vector database** – a special storage that keeps embeddings and can find the most similar ones quickly.  \n* **prompt** – the text that is sent to the LLM as its input.\n\n1. **Indexing**  \n   Load all documents you want the system to use.  \n   Split each document into chunks.  \n   Convert each chunk into an embedding.  \n   Store every embedding in the vector database.\n\n2. **Query time**  \n   Take the user’s question.  \n   Create an embedding for the question.  \n   Search the vector database for chunks that are most similar to the question.  \n   Take the top chunks and put them together with the question to form a prompt.  \n   Send this prompt to the LLM.  \n   The LLM writes an answer based on the prompt.\n\n3. **Answer**  \n   The LLM outputs a response.  \n   The system can also display the chunks that were used, so the user can verify the answer.\n\n## Example  \n**Example 1 – Everyday Indian life**  \nImagine a student named Aarav who wants to know the new pattern for his engineering entrance exam.  \nHe asks a RAG system.  \nThe system searches a set of recent exam papers stored in its database.  \nIt finds a chunk that says: “The exam will now have 80 multiple‑choice questions.”  \nThe LLM uses that chunk to answer: “The new pattern has 80 questions.”  \nAarav can read the chunk to confirm the answer.  \nThis is faster than searching the internet himself.\n\n**Example 2 – Simple analogy**  \nThink of RAG like a library.  \nThe library has many books (documents).  \nWhen you ask a librarian a question, the librarian first looks up the books that might contain the answer (retrieval).  \nShe then reads the relevant pages and tells you the answer (generation).  \nThe librarian’s knowledge base does not change; she only uses the books that are in the library.\n\n**Limitation**  \nIf the retrieved chunks are wrong or missing, the answer will likely be wrong or incomplete.  \nRetrieval quality is the most important part of a RAG system.\n\n## Recap  \n- RAG adds fresh information to a language model’s prompt.  \n- It uses a vector database to find relevant text quickly.  \n- The model’s internal weights stay unchanged.  \n- RAG reduces hallucination and is easier to update.  \n- The system can show which chunks were used for verification.\n\n## Check Yourself  \n1. What does RAG do before the language model writes an answer?  \n2. Why is updating documents in RAG cheaper than retraining a model?  \n3. What is a limitation of a RAG system?\n",
+    "status": "NEEDS_HUMAN_REVIEW"
+  },
+  "usage": {
+    "calls": 6,
+    "prompt_tokens": 11726,
+    "completion_tokens": 7515
+  }
+}

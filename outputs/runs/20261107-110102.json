@@ -1,0 +1,338 @@
+{
+  "state": {
+    "topic": "Introduction to RAG",
+    "run_id": "20261107-110102",
+    "max_retries": 2,
+    "memory_rules": [],
+    "attempts": [
+      {
+        "attempt": 1,
+        "lesson": "# Introduction to Retrieval‑Augmented Generation  \n\n## Hook  \nYou ask a chatbot for the latest scholarship rules, but it replies with old information. How can the answer be up‑to‑date?  \n\n## What Is It?  \nRetrieval‑Augmented Generation (RAG) is a method that lets a text generator use external documents when it answers.  \nThe name has three parts:  \n\n* **Retrieval** – finding relevant pieces of text.  \n* **Augmented** – adding those pieces to the question.  \n* **Generation** – letting a large language model (LLM) write the final answer.  \n\nAn LLM is a computer program that can produce human‑like text after being trained on many books and web pages. In RAG the LLM’s knowledge is not changed; only the input it receives is changed.  \n\n## Why It Matters  \nAn LLM only knows what was in its training data, which stops at a certain date. It cannot see new policies, private files, or recent news unless those are given to it.  \nRAG solves this by giving the LLM real source text at the moment of the query. This reduces the chance of **hallucination**, where the model makes up information that sounds plausible.  \nBecause RAG only updates the document store, it is cheaper and faster than retraining the whole model.  \nIt also lets the system show which source passages were used, so users can check the answer.  \n\n## How It Works  \n\n### Key words  \n* **Chunk** – a small piece of a document, such as a few paragraphs.  \n* **Embedding** – a list of numbers that represents the meaning of a text piece. Similar meanings have similar lists.  \n* **Vector database** – a storage system that holds embeddings and can quickly find the ones closest to a query embedding.  \n* **Prompt** – the text that is sent to an LLM as its input.  \n\n### Steps  \n1. **Load documents** – Gather all the files you want the system to know, such as policy PDFs or product catalogs.  \n2. **Split into chunks** – Break each document into small pieces called chunks.  \n3. **Create embeddings** – Convert every chunk into an embedding, a numeric list that captures its meaning.  \n4. **Store embeddings** – Save all embeddings in a vector database.  \n5. **Encode the user question** – Turn the question into its own embedding.  \n6. **Retrieve similar chunks** – Search the vector database for embeddings that are close to the question embedding.  \n7. **Augment the prompt** – Combine the retrieved chunks with the original question to form a prompt.  \n8. **Generate the answer** – Send the prompt to the LLM, which writes a response using the provided information.  \n\n## Example  \n\n### Example 1: College scholarship guide (Indian context)  \nImagine a college called Sunrise College. The administration uploads the latest scholarship rules into a document library.  \n\n* The system splits the rules into chunks like “Eligibility for merit‑based scholarships” and “Application deadline for 2025”.  \n* Each chunk becomes an embedding and is stored in the vector database.  \n\nA student named Ravi asks, “What is the deadline for the merit scholarship this year?”  \n\n* Ravi’s question is turned into an embedding.  \n* The system retrieves the chunk that talks about the 2025 deadline because its embedding is closest to the question.  \n* The prompt now contains the deadline text and Ravi’s question.  \n* The LLM replies, “The merit scholarship deadline is 30 April 2025.”  \n\nThe answer is current because the document library was updated recently.  \n\n### Example 2: Local grocery inventory (everyday Indian life)  \nImagine a small shop called GreenMart. The owner keeps a digital list of all items and their prices.  \n\n* The list is split into chunks such as “Rice – ₹40 per kg” and “Sugar – ₹35 per kg”.  \n* Embeddings are stored in a vector database.  \n\nA customer asks the shop’s chatbot, “How much does a kilogram of basmati rice cost today?”  \n\n* The question is embedded and the system retrieves the “Rice – ₹40 per kg” chunk.  \n* The prompt combines this price with the question.  \n* The LLM answers, “Basmati rice costs ₹40 per kilogram.”  \n\n### Limitation  \nIf the retrieval step returns the wrong or incomplete chunk, the LLM will produce a wrong or incomplete answer. Retrieval quality is the most important factor.  \n\n## Recap  \n- RAG means retrieving documents, adding them to a question, and letting an LLM generate an answer.  \n- It keeps the LLM’s knowledge up‑to‑date without retraining.  \n- Chunks are small pieces of text; embeddings turn chunks into numeric meaning vectors.  \n- A vector database stores embeddings and finds the most similar ones to a query.  \n- The prompt is the combined text that the LLM reads to write its response.  \n- Bad retrieval leads to bad answers.  \n\n## Check Yourself  \n1. What does the “retrieval” part of RAG do?  \n2. Why can RAG reduce hallucination compared to a plain LLM?  \n3. In the grocery example, what piece of information is stored in the vector database?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "Lesson includes clear What, Why, and How sections with substantive content.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": false,
+              "reason": "[llm] Invented specific facts: \"deadline ... 30 April 2025\" and \"₹40 per kg\" are unsupported real‑world details.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": false,
+              "reason": "[code] Technical term(s) used before they are defined: 'embedding', 'vector database', 'hallucination', 'chunk'. First use of 'embedding': \"Embedding – a list of numbers that represents the meaning of a text piece.\"",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 12.5 words; long sentences are 0%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": false,
+              "reason": "[llm] No simple analogy is provided despite having two concrete examples.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 6 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 710 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C2",
+            "C3",
+            "C5"
+          ],
+          "metrics": {
+            "unexplained_terms": [
+              "embedding",
+              "vector database",
+              "hallucination",
+              "chunk"
+            ],
+            "sentences": 57,
+            "avg_words_per_sentence": 12.5,
+            "long_sentences": 0,
+            "long_share": 0.0,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 6,
+            "questions": 3,
+            "words": 710
+          },
+          "evaluator_error": false
+        }
+      },
+      {
+        "attempt": 2,
+        "lesson": "# Introduction to Retrieval‑Augmented Generation  \n\n## Hook  \nYou ask a chatbot for the newest exam dates, but it tells you old dates.  \n\n## What Is It?  \nRetrieval‑Augmented Generation (RAG) is a method that lets a text generator use extra documents when it answers.  \nThe name has three parts:  \n\n* **Retrieval** means finding useful pieces of text.  \n* **Augmented** means adding those pieces to the question.  \n* **Generation** means letting a large language model (LLM) write the final answer.  \n\nAn LLM is a computer program that can produce human‑like text after learning from many books and web pages. In RAG the LLM’s knowledge does not change; only the input it receives changes.  \n\n**Hallucination** means the model creates information that sounds real but is actually false.  \n\n## Why It Matters  \nAn LLM only knows what was in its training data, which stops at a certain date. It cannot see new policies, private files, or recent news unless those are given to it.  \n\nRAG solves this by giving the LLM real source text at the moment of the query. This reduces hallucination because the model can copy from real passages.  \n\nUpdating the document library is cheaper and faster than retraining the whole model.  \n\nRAG can also show which source passages were used, so a user can verify the answer.  \n\n## How It Works  \n\n### Key words  \n* **Chunk** – a small piece of a document, such as a few paragraphs.  \n* **Embedding** – a list of numbers that represents the meaning of a text piece. Similar meanings have similar lists.  \n* **Vector database** – a storage system that holds embeddings and can quickly find the ones closest to a query embedding.  \n* **Prompt** – the text that is sent to an LLM as its input.  \n\n### Steps  \n1. **Load documents** – Gather all files that the system should know.  \n2. **Split into chunks** – Break each document into small pieces called chunks.  \n3. **Create embeddings** – Turn every chunk into an embedding, a numeric list that captures its meaning.  \n4. **Store embeddings** – Save all embeddings in a vector database.  \n5. **Encode the user question** – Turn the question into its own embedding.  \n6. **Retrieve similar chunks** – Search the vector database for embeddings that are close to the question embedding.  \n7. **Augment the prompt** – Combine the retrieved chunks with the original question to form a prompt.  \n8. **Generate the answer** – Send the prompt to the LLM, which writes a response using the provided information.  \n\n## Example  \n\n### Analogy  \nRAG works like a student who first looks up the textbook for the exact paragraph before answering a teacher’s question.  \n\n### Example 1: College scholarship guide (imagined Indian college)  \nImagine a college called Sunrise College. The administration uploads the latest scholarship rules into a document library.  \n\n* The system splits the rules into chunks such as “Eligibility for merit‑based scholarships” and “Application deadline for the current year”.  \n* Each chunk becomes an embedding and is stored in the vector database.  \n\nA student named Ravi asks, “When is the merit scholarship deadline this year?”  \n\n* Ravi’s question is turned into an embedding.  \n* The system retrieves the chunk that talks about the deadline because its embedding is closest to the question.  \n* The prompt now contains the deadline text and Ravi’s question.  \n* The LLM replies, “The merit scholarship deadline is 30 April (this date is imagined).”  \n\n### Example 2: Local grocery price check (imagined shop)  \nImagine a small shop called GreenMart. The owner keeps a digital list of items and their prices.  \n\n* The list is split into chunks such as “Basmati rice – 40 rupees per kilogram” and “Sugar – 35 rupees per kilogram”.  \n* Embeddings of these chunks are stored in the vector database.  \n\nA customer asks the shop’s chatbot, “How much does basmati rice cost today?”  \n\n* The question is embedded and the system retrieves the “Basmati rice – 40 rupees per kilogram” chunk.  \n* The prompt combines this price with the question.  \n* The LLM answers, “Basmati rice costs 40 rupees per kilogram (this price is imagined).”  \n\n### Limitation  \nIf the retrieval step returns the wrong or incomplete chunk, the answer will likely be wrong or incomplete. Retrieval quality matters most.  \n\n## Recap  \n- RAG finds relevant text, adds it to a question, and lets an LLM write the answer.  \n- It keeps the LLM’s knowledge up‑to‑date without retraining.  \n- A chunk is a small piece of a document; an embedding turns a chunk into a numeric meaning vector.  \n- A vector database stores embeddings and finds the most similar ones to a query.  \n- The prompt is the combined text that the LLM reads to produce its response.  \n- Poor retrieval leads to poor answers.  \n\n## Check Yourself  \n1. What does the “retrieval” part of RAG do?  \n2. How does RAG help reduce hallucination?  \n3. In the grocery example, what kind of information is stored in the vector database?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "Lesson includes clear What, Why, and How sections with content.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": false,
+              "reason": "[llm] \"The merit scholarship deadline is 30 April (this date is imagined)\" invents a specific date not in notes.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": false,
+              "reason": "[code] Technical term(s) used before they are defined: 'embedding', 'vector database', 'chunk'. First use of 'embedding': \"Embedding – a list of numbers that represents the meaning of a text piece.\"",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 12.6 words; long sentences are 0%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": true,
+              "reason": "Provides two concrete examples (college scholarship, grocery price) and an analogy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 6 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 719 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C2",
+            "C3"
+          ],
+          "metrics": {
+            "unexplained_terms": [
+              "embedding",
+              "vector database",
+              "chunk"
+            ],
+            "sentences": 57,
+            "avg_words_per_sentence": 12.6,
+            "long_sentences": 0,
+            "long_share": 0.0,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 6,
+            "questions": 3,
+            "words": 719
+          },
+          "evaluator_error": false
+        }
+      },
+      {
+        "attempt": 3,
+        "lesson": "# Introduction to Retrieval‑Augmented Generation  \n\n## Hook  \nYou ask a chatbot for the latest exam schedule, but it tells you an old date.  \n\n## What Is It?  \nRetrieval‑Augmented Generation (RAG) is a method that helps a text generator use extra documents when answering.  \n* **Retrieval** means finding useful pieces of text.  \n* **Augmented** means adding those pieces to the question.  \n* **Generation** means letting a large language model (LLM) write the final answer.  \nAn **LLM** is a computer program that can produce human‑like text after learning from many books and web pages. In RAG the LLM’s knowledge does not change; only the input it receives changes.  \n\n**Hallucination** means the model creates information that sounds real but is actually false.  \n\n## Why It Matters  \nAn LLM only knows what was in its training data, which stops at a certain date.  \nIt cannot see new policies, private files, or recent news unless those are given to it.  \nRAG solves this by giving the LLM real source text at the moment of the query.  \nThis reduces hallucination because the model can copy from real passages.  \nUpdating the document library is cheaper and faster than retraining the whole model.  \nRAG can also show which source passages were used, so a user can verify the answer.  \n\n## How It Works  \n\n### Key words  \n* **Chunk** – a small piece of a document, such as a few paragraphs.  \n* **Embedding** – a list of numbers that represents the meaning of a text piece. Texts with similar meaning have similar lists.  \n* **Vector database** – a storage system that holds embeddings and can quickly find the ones closest to a query embedding.  \n* **Prompt** – the text that is sent to an LLM as its input.  \n\n### Steps  \n1. **Load documents** – Gather all files that the system should know.  \n2. **Split into chunks** – Break each document into small pieces called chunks.  \n3. **Create embeddings** – Turn every chunk into an embedding, a numeric list that captures its meaning.  \n4. **Store embeddings** – Save all embeddings in a vector database.  \n5. **Encode the user question** – Turn the question into its own embedding.  \n6. **Retrieve similar chunks** – Search the vector database for embeddings that are close to the question embedding.  \n7. **Augment the prompt** – Combine the retrieved chunks with the original question to form a prompt.  \n8. **Generate the answer** – Send the prompt to the LLM, which writes a response using the provided information.  \n\n## Example  \n\n### Analogy  \nRAG works like a student who first looks up the exact paragraph in a textbook before answering a teacher’s question.  \n\n### Example 1: College scholarship guide (imagined)  \nImagine a college called Sunrise College. The administration uploads the latest scholarship rules into a document library.  \n\n* The system splits the rules into chunks such as “Eligibility for merit‑based scholarships” and “Application deadline for the current year”.  \n* Each chunk becomes an embedding and is stored in the vector database.  \n\nA student named Ravi asks, “When is the merit scholarship deadline this year?”  \n\n* Ravi’s question is turned into an embedding.  \n* The system retrieves the chunk that talks about the deadline because its embedding is closest to the question.  \n* The prompt now contains that deadline text and Ravi’s question.  \n* The LLM replies, “The merit scholarship deadline is mentioned in the latest rule document.”  \n\n### Example 2: Local grocery price check (imagined)  \nImagine a small shop called GreenMart. The owner keeps a digital list of items and their prices.  \n\n* The list is split into chunks such as “Basmati rice – 40 rupees per kilogram” and “Sugar – 35 rupees per kilogram”.  \n* Embeddings of these chunks are stored in the vector database.  \n\nA customer asks the shop’s chatbot, “How much does basmati rice cost today?”  \n\n* The question is embedded and the system retrieves the “Basmati rice – 40 rupees per kilogram” chunk.  \n* The prompt combines this price with the question.  \n* The LLM answers, “Basmati rice costs 40 rupees per kilogram (this price is imagined).”  \n\n### Limitation  \nIf the retrieval step returns the wrong or incomplete chunk, the answer will likely be wrong or incomplete. Retrieval quality matters most.  \n\n## Recap  \n- RAG finds relevant text, adds it to a question, and lets an LLM write the answer.  \n- It keeps the LLM’s knowledge up‑to‑date without retraining.  \n- A chunk is a small piece of a document; an embedding turns a chunk into a numeric meaning vector.  \n- A vector database stores embeddings and finds the most similar ones to a query.  \n- The prompt is the combined text that the LLM reads to produce its response.  \n- Poor retrieval leads to poor answers.  \n\n## Check Yourself  \n1. What does the “retrieval” part of RAG do?  \n2. How does RAG help reduce hallucination?  \n3. In the grocery example, what kind of information is stored in the vector database?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "Lesson clearly defines WHAT RAG is, explains WHY it matters, and details HOW it works.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": false,
+              "reason": "[llm] \"Basmati rice – 40 rupees per kilogram\" invents a specific price not supported by the reference notes.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": false,
+              "reason": "[code] Technical term(s) used before they are defined: 'embedding', 'vector database', 'chunk'. First use of 'embedding': \"Embedding – a list of numbers that represents the meaning of a text piece.\"",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 12.8 words; long sentences are 0%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": true,
+              "reason": "Provides two concrete examples (scholarship guide, grocery price) and an analogy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 6 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 716 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C2",
+            "C3"
+          ],
+          "metrics": {
+            "unexplained_terms": [
+              "embedding",
+              "vector database",
+              "chunk"
+            ],
+            "sentences": 56,
+            "avg_words_per_sentence": 12.8,
+            "long_sentences": 0,
+            "long_share": 0.0,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 6,
+            "questions": 3,
+            "words": 716
+          },
+          "evaluator_error": false
+        }
+      }
+    ],
+    "rejection_log": [
+      {
+        "attempt": 1,
+        "failed": [
+          {
+            "id": "C2",
+            "name": "Accurate and grounded",
+            "reason": "[llm] Invented specific facts: \"deadline ... 30 April 2025\" and \"₹40 per kg\" are unsupported real‑world details."
+          },
+          {
+            "id": "C3",
+            "name": "No unexplained jargon, simple words",
+            "reason": "[code] Technical term(s) used before they are defined: 'embedding', 'vector database', 'hallucination', 'chunk'. First use of 'embedding': \"Embedding – a list of numbers that represents the meaning of a text piece.\""
+          },
+          {
+            "id": "C5",
+            "name": "Teaches by example",
+            "reason": "[llm] No simple analogy is provided despite having two concrete examples."
+          }
+        ],
+        "what_changed": "Changes made after failing: C2, C3, C5. Removed or replaced: You ask a chatbot for the latest scholarship rules, but it replies with old information. How can the answer be up‑to‑date? | Retrieval‑Augmented Generation (RAG) is a method that lets a text generator use external documents when it answers. Added or updated: You ask a chatbot for the newest exam dates, but it tells you old dates. | Retrieval‑Augmented Generation (RAG) is a method that lets a text generator use extra documents when it answers."
+      },
+      {
+        "attempt": 2,
+        "failed": [
+          {
+            "id": "C2",
+            "name": "Accurate and grounded",
+            "reason": "[llm] \"The merit scholarship deadline is 30 April (this date is imagined)\" invents a specific date not in notes."
+          },
+          {
+            "id": "C3",
+            "name": "No unexplained jargon, simple words",
+            "reason": "[code] Technical term(s) used before they are defined: 'embedding', 'vector database', 'chunk'. First use of 'embedding': \"Embedding – a list of numbers that represents the meaning of a text piece.\""
+          }
+        ],
+        "what_changed": "Changes made after failing: C2, C3. Removed or replaced: You ask a chatbot for the newest exam dates, but it tells you old dates. | Retrieval‑Augmented Generation (RAG) is a method that lets a text generator use extra documents when it answers. Added or updated: You ask a chatbot for the latest exam schedule, but it tells you an old date. | Retrieval‑Augmented Generation (RAG) is a method that helps a text generator use extra documents when answering."
+      }
+    ],
+    "retry_count": 2,
+    "final_lesson": "# Introduction to Retrieval‑Augmented Generation  \n\n## Hook  \nYou ask a chatbot for the newest exam dates, but it tells you old dates.  \n\n## What Is It?  \nRetrieval‑Augmented Generation (RAG) is a method that lets a text generator use extra documents when it answers.  \nThe name has three parts:  \n\n* **Retrieval** means finding useful pieces of text.  \n* **Augmented** means adding those pieces to the question.  \n* **Generation** means letting a large language model (LLM) write the final answer.  \n\nAn LLM is a computer program that can produce human‑like text after learning from many books and web pages. In RAG the LLM’s knowledge does not change; only the input it receives changes.  \n\n**Hallucination** means the model creates information that sounds real but is actually false.  \n\n## Why It Matters  \nAn LLM only knows what was in its training data, which stops at a certain date. It cannot see new policies, private files, or recent news unless those are given to it.  \n\nRAG solves this by giving the LLM real source text at the moment of the query. This reduces hallucination because the model can copy from real passages.  \n\nUpdating the document library is cheaper and faster than retraining the whole model.  \n\nRAG can also show which source passages were used, so a user can verify the answer.  \n\n## How It Works  \n\n### Key words  \n* **Chunk** – a small piece of a document, such as a few paragraphs.  \n* **Embedding** – a list of numbers that represents the meaning of a text piece. Similar meanings have similar lists.  \n* **Vector database** – a storage system that holds embeddings and can quickly find the ones closest to a query embedding.  \n* **Prompt** – the text that is sent to an LLM as its input.  \n\n### Steps  \n1. **Load documents** – Gather all files that the system should know.  \n2. **Split into chunks** – Break each document into small pieces called chunks.  \n3. **Create embeddings** – Turn every chunk into an embedding, a numeric list that captures its meaning.  \n4. **Store embeddings** – Save all embeddings in a vector database.  \n5. **Encode the user question** – Turn the question into its own embedding.  \n6. **Retrieve similar chunks** – Search the vector database for embeddings that are close to the question embedding.  \n7. **Augment the prompt** – Combine the retrieved chunks with the original question to form a prompt.  \n8. **Generate the answer** – Send the prompt to the LLM, which writes a response using the provided information.  \n\n## Example  \n\n### Analogy  \nRAG works like a student who first looks up the textbook for the exact paragraph before answering a teacher’s question.  \n\n### Example 1: College scholarship guide (imagined Indian college)  \nImagine a college called Sunrise College. The administration uploads the latest scholarship rules into a document library.  \n\n* The system splits the rules into chunks such as “Eligibility for merit‑based scholarships” and “Application deadline for the current year”.  \n* Each chunk becomes an embedding and is stored in the vector database.  \n\nA student named Ravi asks, “When is the merit scholarship deadline this year?”  \n\n* Ravi’s question is turned into an embedding.  \n* The system retrieves the chunk that talks about the deadline because its embedding is closest to the question.  \n* The prompt now contains the deadline text and Ravi’s question.  \n* The LLM replies, “The merit scholarship deadline is 30 April (this date is imagined).”  \n\n### Example 2: Local grocery price check (imagined shop)  \nImagine a small shop called GreenMart. The owner keeps a digital list of items and their prices.  \n\n* The list is split into chunks such as “Basmati rice – 40 rupees per kilogram” and “Sugar – 35 rupees per kilogram”.  \n* Embeddings of these chunks are stored in the vector database.  \n\nA customer asks the shop’s chatbot, “How much does basmati rice cost today?”  \n\n* The question is embedded and the system retrieves the “Basmati rice – 40 rupees per kilogram” chunk.  \n* The prompt combines this price with the question.  \n* The LLM answers, “Basmati rice costs 40 rupees per kilogram (this price is imagined).”  \n\n### Limitation  \nIf the retrieval step returns the wrong or incomplete chunk, the answer will likely be wrong or incomplete. Retrieval quality matters most.  \n\n## Recap  \n- RAG finds relevant text, adds it to a question, and lets an LLM write the answer.  \n- It keeps the LLM’s knowledge up‑to‑date without retraining.  \n- A chunk is a small piece of a document; an embedding turns a chunk into a numeric meaning vector.  \n- A vector database stores embeddings and finds the most similar ones to a query.  \n- The prompt is the combined text that the LLM reads to produce its response.  \n- Poor retrieval leads to poor answers.  \n\n## Check Yourself  \n1. What does the “retrieval” part of RAG do?  \n2. How does RAG help reduce hallucination?  \n3. In the grocery example, what kind of information is stored in the vector database?\n",
+    "status": "NEEDS_HUMAN_REVIEW"
+  },
+  "usage": {
+    "calls": 6,
+    "prompt_tokens": 14335,
+    "completion_tokens": 7998
+  }
+}

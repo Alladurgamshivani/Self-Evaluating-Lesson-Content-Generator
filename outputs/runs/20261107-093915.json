@@ -1,0 +1,211 @@
+{
+  "state": {
+    "topic": "Introduction to RAG (Retrieval-Augmented Generation)",
+    "seed_lesson": "# Introduction to RAG: Teaching an AI to Look Things Up\n\n## Hook\n\nImagine you ask a chatbot, \"What is the last date to pay my college fees?\" A chatbot is a program you can talk to. It answers very fast. But the date is wrong. It never saw your college notice. It just made a guess that sounded sure.\n\nWrong answers like this are a big problem. RAG is one way to fix it. By the end of this lesson, you will know what RAG is. You will know why people use it. You will also see how it works, step by step.\n\n## What Is It?\n\nRAG stands for Retrieval-Augmented Generation. The name looks hard, but the idea is simple. Let us break it into three words.\n\n- **Retrieval** means finding. The system finds the right information.\n- **Augmented** means added. The system adds that information to your question.\n- **Generation** means writing. The AI writes the answer.\n\nSo RAG is a way to let an AI look up facts before it answers. Think of an open-book exam. In a normal exam, you answer from memory. In an open-book exam, you can open the book and check. RAG gives the AI an open book.\n\nNow let us meet the AI itself. An LLM is a computer program that reads and writes human language. LLM is short for Large Language Model. ChatGPT, Gemini and Claude are examples. An LLM learns from huge amounts of text. But it only knows what was in that text. It does not know your private files. It does not know today's news.\n\n## Why It Matters\n\nAn LLM has three common problems. RAG helps with all three.\n\n1. **Old knowledge.** An LLM stops learning at some date. It can miss new rules or new prices.\n2. **No private data.** It has not read your college notices or your company files.\n3. **Hallucination.** Hallucination means the AI makes up an answer that sounds true but is false.\n\nWith RAG, the AI reads the right page first. Then it answers from that page. This gives three benefits. Answers are more correct. Information stays up to date, because you only change the documents. And the AI can show its source, so you can check it.\n\nRAG is also cheaper than the other option. The other option is to train the model again with your data. Training takes a lot of time, money and skill. RAG does not need any of that.\n\n## How It Works\n\nRAG has two phases. First, we prepare the documents. Then, we answer questions.\n\n### Phase 1: Prepare the documents (done once)\n\n1. **Collect.** Gather your documents. These can be PDFs, web pages or notices.\n2. **Split.** Cut each document into small pieces. Each piece is called a chunk. A chunk is a few paragraphs long.\n3. **Embed.** Turn each chunk into a list of numbers. This list is called an embedding. Chunks with similar meaning get similar numbers. Think of map coordinates. Two nearby places have close coordinates. Two chunks about the same topic have close numbers.\n4. **Store.** Save all the embeddings in a vector database. A vector database is a special store. It can quickly find numbers that are close to each other.\n\n### Phase 2: Answer a question (done every time)\n\n1. **Ask.** The user types a question.\n2. **Embed the question.** The question is also turned into numbers.\n3. **Search.** The vector database finds the chunks closest to the question. These are the most useful pieces.\n4. **Build the prompt.** A prompt is the text we send to the LLM. We put the chunks and the question together in one prompt.\n5. **Generate.** The LLM reads the prompt. It writes an answer using those chunks.\n\nThe model itself does not change during this process. RAG works by retraining the model on your documents. It only changes what the model reads before it answers.\n\n## Example\n\nLet us see RAG in two real situations.\n\n**Example 1: A college helpdesk bot.** A student asks, \"Can I write the exam with low attendance?\" The college has a rule book in PDF form. First, the rule book is split into chunks and stored. Then the question is turned into numbers. The system finds the chunk about attendance rules. The LLM reads that chunk and explains the rule in simple words. The answer comes from the real rule book, not from a guess.\n\n**Example 2: A scholarship scheme helper.** A student asks, \"Can I apply for this government scholarship?\" The helper searches the official scheme documents. It finds the pages about who can apply. The LLM then explains the rules in easy words. When the rules change, you only update the documents. You do not need to train the AI again.\n\nOne warning is important. RAG is not magic. If the search finds the wrong chunk, the answer will be wrong too. That is why people must test a RAG system before they trust it.\n\n## Recap\n\n- RAG lets an AI look up facts before it answers.\n- First, documents are split into chunks and saved as numbers.\n- Then, the best chunks are found and added to the question.\n- The AI writes its answer from those chunks.\n- RAG helps with old knowledge, private data and made-up answers.\n- If the search finds the wrong chunks, the answer will be wrong too.\n\n## Check Yourself\n\n1. What do the three words in RAG mean?\n2. Why is RAG cheaper than training the model again?\n3. A student asks about a new exam date. Which step in RAG finds the right notice?\n",
+    "run_id": "20261107-093915",
+    "max_retries": 1,
+    "memory_rules": [],
+    "attempts": [
+      {
+        "attempt": 1,
+        "lesson": "# Introduction to RAG: Teaching an AI to Look Things Up\n\n## Hook\n\nImagine you ask a chatbot, \"What is the last date to pay my college fees?\" A chatbot is a program you can talk to. It answers very fast. But the date is wrong. It never saw your college notice. It just made a guess that sounded sure.\n\nWrong answers like this are a big problem. RAG is one way to fix it. By the end of this lesson, you will know what RAG is. You will know why people use it. You will also see how it works, step by step.\n\n## What Is It?\n\nRAG stands for Retrieval-Augmented Generation. The name looks hard, but the idea is simple. Let us break it into three words.\n\n- **Retrieval** means finding. The system finds the right information.\n- **Augmented** means added. The system adds that information to your question.\n- **Generation** means writing. The AI writes the answer.\n\nSo RAG is a way to let an AI look up facts before it answers. Think of an open-book exam. In a normal exam, you answer from memory. In an open-book exam, you can open the book and check. RAG gives the AI an open book.\n\nNow let us meet the AI itself. An LLM is a computer program that reads and writes human language. LLM is short for Large Language Model. ChatGPT, Gemini and Claude are examples. An LLM learns from huge amounts of text. But it only knows what was in that text. It does not know your private files. It does not know today's news.\n\n## Why It Matters\n\nAn LLM has three common problems. RAG helps with all three.\n\n1. **Old knowledge.** An LLM stops learning at some date. It can miss new rules or new prices.\n2. **No private data.** It has not read your college notices or your company files.\n3. **Hallucination.** Hallucination means the AI makes up an answer that sounds true but is false.\n\nWith RAG, the AI reads the right page first. Then it answers from that page. This gives three benefits. Answers are more correct. Information stays up to date, because you only change the documents. And the AI can show its source, so you can check it.\n\nRAG is also cheaper than the other option. The other option is to train the model again with your data. Training takes a lot of time, money and skill. RAG does not need any of that.\n\n## How It Works\n\nRAG has two phases. First, we prepare the documents. Then, we answer questions.\n\n### Phase 1: Prepare the documents (done once)\n\n1. **Collect.** Gather your documents. These can be PDFs, web pages or notices.\n2. **Split.** Cut each document into small pieces. Each piece is called a chunk. A chunk is a few paragraphs long.\n3. **Embed.** Turn each chunk into a list of numbers. This list is called an embedding. Chunks with similar meaning get similar numbers. Think of map coordinates. Two nearby places have close coordinates. Two chunks about the same topic have close numbers.\n4. **Store.** Save all the embeddings in a vector database. A vector database is a special store. It can quickly find numbers that are close to each other.\n\n### Phase 2: Answer a question (done every time)\n\n1. **Ask.** The user types a question.\n2. **Embed the question.** The question is also turned into numbers.\n3. **Search.** The vector database finds the chunks closest to the question. These are the most useful pieces.\n4. **Build the prompt.** A prompt is the text we send to the LLM. We put the chunks and the question together in one prompt.\n5. **Generate.** The LLM reads the prompt. It writes an answer using those chunks.\n\nThe model itself does not change during this process. RAG works by retraining the model on your documents. It only changes what the model reads before it answers.\n\n## Example\n\nLet us see RAG in two real situations.\n\n**Example 1: A college helpdesk bot.** A student asks, \"Can I write the exam with low attendance?\" The college has a rule book in PDF form. First, the rule book is split into chunks and stored. Then the question is turned into numbers. The system finds the chunk about attendance rules. The LLM reads that chunk and explains the rule in simple words. The answer comes from the real rule book, not from a guess.\n\n**Example 2: A scholarship scheme helper.** A student asks, \"Can I apply for this government scholarship?\" The helper searches the official scheme documents. It finds the pages about who can apply. The LLM then explains the rules in easy words. When the rules change, you only update the documents. You do not need to train the AI again.\n\nOne warning is important. RAG is not magic. If the search finds the wrong chunk, the answer will be wrong too. That is why people must test a RAG system before they trust it.\n\n## Recap\n\n- RAG lets an AI look up facts before it answers.\n- First, documents are split into chunks and saved as numbers.\n- Then, the best chunks are found and added to the question.\n- The AI writes its answer from those chunks.\n- RAG helps with old knowledge, private data and made-up answers.\n- If the search finds the wrong chunks, the answer will be wrong too.\n\n## Check Yourself\n\n1. What do the three words in RAG mean?\n2. Why is RAG cheaper than training the model again?\n3. A student asks about a new exam date. Which step in RAG finds the right notice?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "Lesson clearly explains what RAG is, why it matters, and how it works.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": false,
+              "reason": "[llm] \"RAG works by retraining the model on your documents\" contradicts notes that RAG does not change model weights.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 8.0 words; long sentences are 0%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": true,
+              "reason": "Includes two concrete Indian examples and an open‑book exam analogy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 6 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 837 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C2"
+          ],
+          "metrics": {
+            "unexplained_terms": [],
+            "sentences": 105,
+            "avg_words_per_sentence": 8.0,
+            "long_sentences": 0,
+            "long_share": 0.0,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 6,
+            "questions": 3,
+            "words": 837
+          }
+        }
+      },
+      {
+        "attempt": 2,
+        "lesson": "# Introduction to Retrieval‑Augmented Generation (RAG)\n\n## Hook\nYou ask a chatbot, “When does the next train to Mumbai leave?” The bot replies, but the time is wrong. It did not look at the railway schedule. It guessed.\n\n## What Is It?\nRetrieval‑Augmented Generation, or RAG, is a method that lets an AI fetch real information before answering.  \n- **Retrieval** means finding relevant text from a stored set of documents.  \n- **Augmented** means adding that found text to the user’s question.  \n- **Generation** means the AI writes the final answer.  \n\nA **large language model (LLM)** is a computer program that can read and write natural language. The LLM’s knowledge stops at the date of its training data. RAG does not change the LLM’s internal weights. It only changes the prompt, which is the text sent to the LLM.\n\n## Why It Matters\n1. **Out‑of‑date knowledge** – An LLM cannot know events after its training cutoff. RAG can bring in the latest documents.  \n2. **Private data** – The LLM does not see your company files unless you give them. RAG lets you add those files safely.  \n3. **Hallucination** – The LLM sometimes makes up facts. RAG reduces this by giving the model real source text to copy from.  \n\nUpdating a RAG system only needs new documents in the knowledge base. You do not need to retrain the LLM, which saves time and money.\n\n## How It Works\n1. **Indexing (prepare once)** – Load all documents, split each into small pieces called **chunks**.  \n2. **Embedding** – Convert each chunk into an **embedding**, a list of numbers that captures its meaning.  \n3. **Store** – Save all embeddings in a **vector database**, a special store that can quickly find similar vectors.  \n4. **Question embedding** – When a user asks, turn the question into an embedding.  \n5. **Retrieval** – Search the vector database for chunks whose embeddings are closest to the question embedding.  \n6. **Prompt creation** – Combine the retrieved chunks and the original question into a single prompt.  \n7. **Generation** – Send the prompt to the LLM. The LLM reads the prompt and writes an answer using the retrieved text.  \n\nThe LLM’s weights stay unchanged throughout this pipeline.\n\n## Example\n### Example 1: College fee reminder bot  \nA student asks, “What is the last date to pay my tuition?” The college’s fee notice PDF is already split into chunks and stored.  \n- The system finds the chunk that mentions the payment deadline.  \n- The prompt includes that chunk and the question.  \n- The LLM replies with the exact date from the notice.  \n\n### Example 2: Railway enquiry app  \nA commuter types, “Is there a night train from Delhi to Chennai on Friday?” The railway schedule files are indexed.  \n- Retrieval finds the relevant schedule rows.  \n- The prompt shows those rows and the question.  \n- The LLM answers with the correct train number and time.  \n\n**Limitation:** If retrieval returns the wrong or incomplete chunks, the final answer will also be wrong or incomplete. Retrieval quality is the most important factor.\n\n## Recap\n- RAG lets an AI look up facts before answering.  \n- Documents are split into chunks, turned into embeddings, and stored in a vector database.  \n- At query time, the system finds the most similar chunks and adds them to the prompt.  \n- The LLM generates the answer from this augmented prompt.  \n- RAG updates knowledge cheaply and reduces hallucinations.  \n- Bad retrieval leads to bad answers.\n\n## Check Yourself\n1. What do the three words in “Retrieval‑Augmented Generation” mean?  \n2. How does RAG keep the LLM’s knowledge up to date without retraining?  \n3. In the railway example, which step finds the schedule rows that answer the user’s question?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "The lesson clearly explains what RAG is, why it matters, and how it works.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": true,
+              "reason": "All factual statements match the reference notes and no unsupported claims are made.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": false,
+              "reason": "[code] Technical term(s) used without an explanation at first use: 'embedding', 'vector database', 'hallucination'. First use of 'embedding': \"Embedding – Convert each chunk into an embedding, a list of numbers that captures its meaning.\" | [llm] The term “knowledge base” is used without any explanation.",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 10.8 words; long sentences are 0%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": false,
+              "reason": "[llm] The lesson provides two examples but does not include a simple analogy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 6 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 542 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C3",
+            "C5"
+          ],
+          "metrics": {
+            "unexplained_terms": [
+              "embedding",
+              "vector database",
+              "hallucination"
+            ],
+            "sentences": 50,
+            "avg_words_per_sentence": 10.8,
+            "long_sentences": 0,
+            "long_share": 0.0,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 6,
+            "questions": 3,
+            "words": 542
+          }
+        }
+      }
+    ],
+    "rejection_log": [
+      {
+        "attempt": 1,
+        "failed": [
+          {
+            "id": "C2",
+            "name": "Accurate and grounded",
+            "reason": "[llm] \"RAG works by retraining the model on your documents\" contradicts notes that RAG does not change model weights."
+          }
+        ],
+        "what_changed": "Changes made after failing: C2. Removed or replaced: # Introduction to RAG: Teaching an AI to Look Things Up |  Added or updated: # Introduction to Retrieval‑Augmented Generation (RAG) | You ask a chatbot, “When does the next train to Mumbai leave?” The bot replies, but the time is wrong. It did not look at the railway schedule. It guessed."
+      }
+    ],
+    "retry_count": 1,
+    "final_lesson": "# Introduction to RAG: Teaching an AI to Look Things Up\n\n## Hook\n\nImagine you ask a chatbot, \"What is the last date to pay my college fees?\" A chatbot is a program you can talk to. It answers very fast. But the date is wrong. It never saw your college notice. It just made a guess that sounded sure.\n\nWrong answers like this are a big problem. RAG is one way to fix it. By the end of this lesson, you will know what RAG is. You will know why people use it. You will also see how it works, step by step.\n\n## What Is It?\n\nRAG stands for Retrieval-Augmented Generation. The name looks hard, but the idea is simple. Let us break it into three words.\n\n- **Retrieval** means finding. The system finds the right information.\n- **Augmented** means added. The system adds that information to your question.\n- **Generation** means writing. The AI writes the answer.\n\nSo RAG is a way to let an AI look up facts before it answers. Think of an open-book exam. In a normal exam, you answer from memory. In an open-book exam, you can open the book and check. RAG gives the AI an open book.\n\nNow let us meet the AI itself. An LLM is a computer program that reads and writes human language. LLM is short for Large Language Model. ChatGPT, Gemini and Claude are examples. An LLM learns from huge amounts of text. But it only knows what was in that text. It does not know your private files. It does not know today's news.\n\n## Why It Matters\n\nAn LLM has three common problems. RAG helps with all three.\n\n1. **Old knowledge.** An LLM stops learning at some date. It can miss new rules or new prices.\n2. **No private data.** It has not read your college notices or your company files.\n3. **Hallucination.** Hallucination means the AI makes up an answer that sounds true but is false.\n\nWith RAG, the AI reads the right page first. Then it answers from that page. This gives three benefits. Answers are more correct. Information stays up to date, because you only change the documents. And the AI can show its source, so you can check it.\n\nRAG is also cheaper than the other option. The other option is to train the model again with your data. Training takes a lot of time, money and skill. RAG does not need any of that.\n\n## How It Works\n\nRAG has two phases. First, we prepare the documents. Then, we answer questions.\n\n### Phase 1: Prepare the documents (done once)\n\n1. **Collect.** Gather your documents. These can be PDFs, web pages or notices.\n2. **Split.** Cut each document into small pieces. Each piece is called a chunk. A chunk is a few paragraphs long.\n3. **Embed.** Turn each chunk into a list of numbers. This list is called an embedding. Chunks with similar meaning get similar numbers. Think of map coordinates. Two nearby places have close coordinates. Two chunks about the same topic have close numbers.\n4. **Store.** Save all the embeddings in a vector database. A vector database is a special store. It can quickly find numbers that are close to each other.\n\n### Phase 2: Answer a question (done every time)\n\n1. **Ask.** The user types a question.\n2. **Embed the question.** The question is also turned into numbers.\n3. **Search.** The vector database finds the chunks closest to the question. These are the most useful pieces.\n4. **Build the prompt.** A prompt is the text we send to the LLM. We put the chunks and the question together in one prompt.\n5. **Generate.** The LLM reads the prompt. It writes an answer using those chunks.\n\nThe model itself does not change during this process. RAG works by retraining the model on your documents. It only changes what the model reads before it answers.\n\n## Example\n\nLet us see RAG in two real situations.\n\n**Example 1: A college helpdesk bot.** A student asks, \"Can I write the exam with low attendance?\" The college has a rule book in PDF form. First, the rule book is split into chunks and stored. Then the question is turned into numbers. The system finds the chunk about attendance rules. The LLM reads that chunk and explains the rule in simple words. The answer comes from the real rule book, not from a guess.\n\n**Example 2: A scholarship scheme helper.** A student asks, \"Can I apply for this government scholarship?\" The helper searches the official scheme documents. It finds the pages about who can apply. The LLM then explains the rules in easy words. When the rules change, you only update the documents. You do not need to train the AI again.\n\nOne warning is important. RAG is not magic. If the search finds the wrong chunk, the answer will be wrong too. That is why people must test a RAG system before they trust it.\n\n## Recap\n\n- RAG lets an AI look up facts before it answers.\n- First, documents are split into chunks and saved as numbers.\n- Then, the best chunks are found and added to the question.\n- The AI writes its answer from those chunks.\n- RAG helps with old knowledge, private data and made-up answers.\n- If the search finds the wrong chunks, the answer will be wrong too.\n\n## Check Yourself\n\n1. What do the three words in RAG mean?\n2. Why is RAG cheaper than training the model again?\n3. A student asks about a new exam date. Which step in RAG finds the right notice?\n",
+    "status": "NEEDS_HUMAN_REVIEW"
+  },
+  "usage": {
+    "calls": 3,
+    "prompt_tokens": 7212,
+    "completion_tokens": 3744
+  }
+}

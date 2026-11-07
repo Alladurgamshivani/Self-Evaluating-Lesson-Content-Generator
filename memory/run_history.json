@@ -1,0 +1,211 @@
+[
+  {
+    "run_id": "20261107-112546",
+    "topic": "Introduction to RAG",
+    "timestamp": "2026-11-07T11:26:32",
+    "mode": "groq/openai/gpt-oss-120b",
+    "attempts": 2,
+    "passed": true,
+    "failed_per_attempt": [
+      [
+        "C2",
+        "C5"
+      ],
+      []
+    ],
+    "injected": false,
+    "reasons": {
+      "C2": [
+        "[llm] Invented specific fact \"minimum GPA is 7.5\" (and \"Turmeric – ₹120 per kg\") not supported by notes."
+      ],
+      "C5": [
+        "[llm] Lesson lacks a simple analogy to illustrate RAG."
+      ]
+    },
+    "usage": {
+      "calls": 4,
+      "prompt_tokens": 8705,
+      "completion_tokens": 5343
+    },
+    "rubric_version": "1.2"
+  },
+  {
+    "run_id": "20261107-120526",
+    "topic": "Introduction to RAG",
+    "timestamp": "2026-11-07T12:06:56",
+    "mode": "groq/openai/gpt-oss-20b",
+    "attempts": 3,
+    "passed": false,
+    "failed_per_attempt": [
+      [
+        "C2"
+      ],
+      [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ],
+      [
+        "C3",
+        "C5"
+      ]
+    ],
+    "injected": false,
+    "reasons": {
+      "C2": [
+        "[llm] \"The exam will now have 80 multiple‑choice questions.\" is an invented specific fact not supported by the reference notes, violating factual accuracy.",
+        "[llm] No factual statements to verify; content missing."
+      ],
+      "C1": [
+        "[llm] Lesson lacks explanation of what, why, how."
+      ],
+      "C3": [
+        "[llm] No terms to explain; content missing.",
+        "[llm] The term 'retrieval' is used without prior explanation."
+      ],
+      "C4": [
+        "[code] No readable sentences found."
+      ],
+      "C5": [
+        "[llm] No examples provided.",
+        "[llm] The lesson contains no analogy."
+      ],
+      "C6": [
+        "[code] Missing or out-of-order section(s): 'Hook', 'What Is It?', 'Why It Matters', 'How It Works', 'Example', 'Recap', 'Check Yourself'. | [llm] Sections missing; no flow."
+      ],
+      "C7": [
+        "[code] There is no recap section; there is no check yourself section."
+      ],
+      "C8": [
+        "[code] Lesson is too short: 0 words (minimum 500)."
+      ]
+    },
+    "usage": {
+      "calls": 6,
+      "prompt_tokens": 11726,
+      "completion_tokens": 7515
+    },
+    "rubric_version": "1.2"
+  },
+  {
+    "run_id": "20261107-123356",
+    "topic": "Introduction to RAG (Retrieval-Augmented Generation)",
+    "timestamp": "2026-11-07T12:38:01",
+    "mode": "gemini/gemini-3.8-flash",
+    "attempts": 2,
+    "passed": true,
+    "failed_per_attempt": [
+      [
+        "C2"
+      ],
+      []
+    ],
+    "injected": true,
+    "reasons": {
+      "C2": [
+        "[llm] \"RAG works by retraining the model on your documents.\" incorrectly states that RAG retrains the model."
+      ]
+    },
+    "usage": {
+      "calls": 3,
+      "prompt_tokens": 8151,
+      "completion_tokens": 1687
+    },
+    "rubric_version": "1.2"
+  },
+  {
+    "run_id": "20261107-140503",
+    "topic": "Introduction to RAG",
+    "timestamp": "2026-11-07T14:08:02",
+    "mode": "gemini/gemini-3.8-flash",
+    "attempts": 1,
+    "passed": true,
+    "failed_per_attempt": [
+      []
+    ],
+    "injected": false,
+    "reasons": {},
+    "usage": {
+      "calls": 2,
+      "prompt_tokens": 4416,
+      "completion_tokens": 1697
+    },
+    "rubric_version": "1.2"
+  },
+  {
+    "run_id": "20261107-143104",
+    "topic": "Introduction to RAG (Retrieval-Augmented Generation)",
+    "timestamp": "2026-11-07T14:33:00",
+    "mode": "gemini/gemini-3.8-flash",
+    "attempts": 2,
+    "passed": true,
+    "failed_per_attempt": [
+      [
+        "C2"
+      ],
+      []
+    ],
+    "injected": true,
+    "reasons": {
+      "C2": [
+        "[llm] The sentence 'RAG works by retraining the model on your documents.' directly contradicts reference notes R3 and R7 which state RAG does not involve retraining."
+      ]
+    },
+    "usage": {
+      "calls": 3,
+      "prompt_tokens": 8154,
+      "completion_tokens": 1748
+    },
+    "rubric_version": "1.2"
+  },
+  {
+    "run_id": "20261107-154953",
+    "topic": "Introduction to RAG",
+    "timestamp": "2026-11-07T15:49:59",
+    "mode": "gemini/gemini-3.5-flash-lite",
+    "attempts": 1,
+    "passed": true,
+    "failed_per_attempt": [
+      []
+    ],
+    "injected": false,
+    "reasons": {},
+    "usage": {
+      "calls": 2,
+      "prompt_tokens": 3955,
+      "completion_tokens": 1126
+    },
+    "rubric_version": "1.2"
+  },
+  {
+    "run_id": "20261107-155014",
+    "topic": "Introduction to RAG (Retrieval-Augmented Generation)",
+    "timestamp": "2026-11-07T15:50:21",
+    "mode": "gemini/gemini-3.5-flash-lite",
+    "attempts": 2,
+    "passed": true,
+    "failed_per_attempt": [
+      [
+        "C2"
+      ],
+      []
+    ],
+    "injected": true,
+    "reasons": {
+      "C2": [
+        "[llm] \"RAG works by retraining the model on your documents.\" contradicts R3 which states model weights are NOT changed."
+      ]
+    },
+    "usage": {
+      "calls": 3,
+      "prompt_tokens": 7951,
+      "completion_tokens": 1377
+    },
+    "rubric_version": "1.2"
+  }
+]

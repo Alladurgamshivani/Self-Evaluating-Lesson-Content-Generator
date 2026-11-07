@@ -1,0 +1,205 @@
+{
+  "state": {
+    "topic": "Introduction to RAG",
+    "run_id": "20261107-103706",
+    "max_retries": 2,
+    "memory_rules": [],
+    "attempts": [
+      {
+        "attempt": 1,
+        "lesson": "# Introduction to Retrieval‑Augmented Generation  \n\n## Hook  \nYou type a question about today’s exam schedule, but the answer is outdated.  \n\n## What Is It?  \nRetrieval‑Augmented Generation, called RAG for short, is a method that helps an AI give up‑to‑date answers.  \nRAG first **retrieves** useful text from a chosen set of documents.  \nThen it **augments** the AI’s input with that text.  \nFinally the AI **generates** a response using both the question and the retrieved text.  \n\n## Why It Matters  \nAn AI model only knows what was in its training data.  \nIts knowledge stops at a certain date.  \nIt also does not see private or newly released documents unless we give them.  \nBecause of these limits, the AI can make up facts, a problem called hallucination.  \nRAG reduces hallucination by giving the model real source text to work from.  \nIf we add new documents to the set, the AI instantly learns the new facts.  \nWe do not need to retrain the model, which saves time and money.  \nRAG can also show which source passages it used, so users can check the answer.  \n\n## How It Works  \n1. **Indexing** – Before any question, we load documents, cut them into small pieces called chunks, turn each chunk into an embedding, and store the embeddings in a vector database.  \n2. **Embedding creation** – An embedding is a list of numbers that captures the meaning of a piece of text. Similar meanings produce similar numbers.  \n3. **Query embedding** – When a user asks a question, we turn the question into its own embedding.  \n4. **Retrieval** – The vector database finds the chunks whose embeddings are closest to the question embedding.  \n5. **Augmentation** – We place the retrieved chunks together with the original question to form a prompt. A prompt is the text sent to the AI as input.  \n6. **Generation** – The AI reads the prompt and writes an answer that uses the retrieved information.  \n\n## Example  \n\n### Example 1: College scholarship update (Indian context)  \nA student asks: “What are the eligibility criteria for the 2024 PM Scholarship?”  \nThe system first searches a database that contains the latest government scholarship PDFs.  \nIt finds a chunk that lists the 2024 criteria.  \nThe chunk and the question are combined into a prompt.  \nThe AI replies with the exact criteria and also shows the paragraph it used.  \n\n### Example 2: Railway app schedule change  \nA commuter asks the railway app: “What is the new departure time for Train 12422 from Mumbai to Delhi?”  \nThe app’s RAG system looks at the latest timetable files uploaded by Indian Railways.  \nIt retrieves the chunk that mentions Train 12422’s new time.  \nThe AI then answers: “The train now departs at 22:15 from Mumbai Central.”  \n\n### Analogy  \nThink of RAG as a librarian who first fetches the right books, then reads the relevant pages to you, instead of guessing from memory.  \n\n### Limitation  \nIf the retrieval step returns the wrong or incomplete chunks, the final answer will also be wrong or incomplete.  \n\n## Recap  \n- RAG stands for Retrieval‑Augmented Generation.  \n- It first finds relevant text, then adds it to the AI’s input, then produces an answer.  \n- The method lets the AI use up‑to‑date and private documents without retraining.  \n- Embeddings are numeric representations of meaning that allow fast similarity search.  \n- The quality of the retrieved chunks strongly influences the final answer.  \n\n## Check Yourself  \n1. What does the “retrieval” part of RAG do?  \n2. Why can RAG reduce hallucination compared to a plain AI model?  \n3. What happens if the retrieved chunks are incorrect?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "Clearly explains what RAG is, why it matters, and how it works.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": true,
+              "reason": "All factual statements match the reference notes.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": false,
+              "reason": "[llm] \"store the embeddings in a vector database\" is used without any explanation of what a vector database is.",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 13.4 words; long sentences are 2%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": true,
+              "reason": "Provides two concrete Indian examples and a simple analogy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 5 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 535 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": false,
+          "failed_ids": [
+            "C3"
+          ],
+          "metrics": {
+            "unexplained_terms": [],
+            "sentences": 40,
+            "avg_words_per_sentence": 13.4,
+            "long_sentences": 1,
+            "long_share": 0.025,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 5,
+            "questions": 3,
+            "words": 535
+          },
+          "evaluator_error": false
+        }
+      },
+      {
+        "attempt": 2,
+        "lesson": "# Introduction to Retrieval‑Augmented Generation  \n\n## Hook  \nYou ask a phone app for the latest exam dates, but it tells you the old schedule.  \n\n## What Is It?  \nRetrieval‑Augmented Generation, called RAG for short, is a way to help an AI give up‑to‑date answers.  \n“Retrieval” means finding useful text from a set of documents.  \n“Augmentation” means adding that text to the AI’s input.  \n“Generation” means letting the AI write an answer using both the question and the added text.  \n\n## Why It Matters  \nAn AI only knows what was in its training data.  \nIts knowledge stops at a certain date.  \nIt also cannot see private or newly released documents unless we give them.  \nBecause of these limits, the AI can make up facts; this problem is called hallucination.  \nRAG reduces hallucination by giving the model real source text to answer from.  \nIf we add new documents to the set, the AI instantly learns the new facts.  \nWe do not need to retrain the model, which saves time and money.  \nRAG can also show which source passages it used, so users can verify the answer.  \n\n## How It Works  \n1. **Indexing** – Before any question, we load documents, cut them into small pieces called chunks, turn each chunk into an embedding, and store the embeddings in a vector database.  \n2. **Chunk** – A chunk is a short piece of a document, such as a few paragraphs.  \n3. **Embedding** – An embedding is a list of numbers that represents the meaning of a piece of text. Texts with similar meaning have embeddings that are close to each other.  \n4. **Vector database** – This is a simple storage that holds the numeric lists (embeddings) and can quickly compare them.  \n5. **Similarity search** – This means looking for embeddings that are close to the query embedding, i.e., that have similar meaning.  \n6. **Query embedding** – When a user asks a question, we turn the question into its own embedding.  \n7. **Retrieval** – The vector database uses similarity search to find the chunks whose embeddings are most similar to the question embedding.  \n8. **Prompt** – A prompt is the text that is sent to the AI as its input. We place the retrieved chunks together with the original question to form a prompt.  \n9. **Generation** – The AI reads the prompt and writes an answer that uses the retrieved information.  \n\n## Example  \n### Example 1: College scholarship update (Indian context)  \nA student asks, “What are the eligibility criteria for the 2024 PM Scholarship?”  \nThe system first searches a database that contains the latest government scholarship PDFs.  \nIt finds a chunk that lists the 2024 criteria.  \nThe chunk and the question are combined into a prompt.  \nThe AI replies with the exact criteria and also shows the paragraph it used.  \n\n### Example 2: Railway app schedule change  \nA commuter asks the railway app, “What is the new departure time for Train 12422 from Mumbai to Delhi?”  \nThe app’s RAG system looks at the latest timetable files uploaded by Indian Railways.  \nIt retrieves the chunk that mentions Train 12422’s new time.  \nThe AI then answers, “The train now departs at 22:15 from Mumbai Central.”  \n\n### Analogy  \nThink of RAG as a librarian who first fetches the right books, then reads the relevant pages to you, instead of guessing from memory.  \n\n### Limitation  \nIf the retrieval step returns the wrong or incomplete chunks, the final answer will also be wrong or incomplete.  \n\n## Recap  \n- RAG stands for Retrieval‑Augmented Generation.  \n- It first finds relevant text, then adds it to the AI’s input, then produces an answer.  \n- The method lets the AI use up‑to‑date and private documents without retraining.  \n- An embedding is a numeric list that captures meaning; a vector database stores these lists.  \n- Similarity search finds embeddings that are close in meaning.  \n- The quality of the retrieved chunks strongly influences the final answer.  \n\n## Check Yourself  \n1. What does the “retrieval” part of RAG do?  \n2. Why can RAG reduce hallucination compared to a plain AI model?  \n3. What happens if the retrieved chunks are incorrect?\n",
+        "eval": {
+          "checks": [
+            {
+              "id": "C1",
+              "name": "Covers the key points",
+              "pass": true,
+              "reason": "The lesson clearly explains what RAG is, why it matters, and how it works with real content.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C2",
+              "name": "Accurate and grounded",
+              "pass": true,
+              "reason": "All factual statements match the reference notes and no unsupported claims are made.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C3",
+              "name": "No unexplained jargon, simple words",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C4",
+              "name": "Short, easy sentences",
+              "pass": true,
+              "reason": "Average sentence length is 14.0 words; long sentences are 2%.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C5",
+              "name": "Teaches by example",
+              "pass": true,
+              "reason": "It provides two concrete Indian examples and a clear librarian analogy.",
+              "judged_by": "llm"
+            },
+            {
+              "id": "C6",
+              "name": "Coherent teaching flow",
+              "pass": true,
+              "reason": "OK",
+              "judged_by": "code+llm"
+            },
+            {
+              "id": "C7",
+              "name": "Recap and self-check",
+              "pass": true,
+              "reason": "Recap has 6 points and Check Yourself has 3 questions.",
+              "judged_by": "code"
+            },
+            {
+              "id": "C8",
+              "name": "Right length",
+              "pass": true,
+              "reason": "Length is 619 words.",
+              "judged_by": "code"
+            }
+          ],
+          "overall_pass": true,
+          "failed_ids": [],
+          "metrics": {
+            "unexplained_terms": [],
+            "sentences": 44,
+            "avg_words_per_sentence": 14.0,
+            "long_sentences": 1,
+            "long_share": 0.023,
+            "headings_found": [
+              "Hook",
+              "What Is It?",
+              "Why It Matters",
+              "How It Works",
+              "Example",
+              "Recap",
+              "Check Yourself"
+            ],
+            "recap_points": 6,
+            "questions": 3,
+            "words": 619
+          },
+          "evaluator_error": false
+        }
+      }
+    ],
+    "rejection_log": [
+      {
+        "attempt": 1,
+        "failed": [
+          {
+            "id": "C3",
+            "name": "No unexplained jargon, simple words",
+            "reason": "[llm] \"store the embeddings in a vector database\" is used without any explanation of what a vector database is."
+          }
+        ],
+        "what_changed": "Changes made after failing: C3. Removed or replaced: You type a question about today’s exam schedule, but the answer is outdated. | Retrieval‑Augmented Generation, called RAG for short, is a method that helps an AI give up‑to‑date answers. Added or updated: You ask a phone app for the latest exam dates, but it tells you the old schedule. | Retrieval‑Augmented Generation, called RAG for short, is a way to help an AI give up‑to‑date answers."
+      }
+    ],
+    "retry_count": 1,
+    "final_lesson": "# Introduction to Retrieval‑Augmented Generation  \n\n## Hook  \nYou ask a phone app for the latest exam dates, but it tells you the old schedule.  \n\n## What Is It?  \nRetrieval‑Augmented Generation, called RAG for short, is a way to help an AI give up‑to‑date answers.  \n“Retrieval” means finding useful text from a set of documents.  \n“Augmentation” means adding that text to the AI’s input.  \n“Generation” means letting the AI write an answer using both the question and the added text.  \n\n## Why It Matters  \nAn AI only knows what was in its training data.  \nIts knowledge stops at a certain date.  \nIt also cannot see private or newly released documents unless we give them.  \nBecause of these limits, the AI can make up facts; this problem is called hallucination.  \nRAG reduces hallucination by giving the model real source text to answer from.  \nIf we add new documents to the set, the AI instantly learns the new facts.  \nWe do not need to retrain the model, which saves time and money.  \nRAG can also show which source passages it used, so users can verify the answer.  \n\n## How It Works  \n1. **Indexing** – Before any question, we load documents, cut them into small pieces called chunks, turn each chunk into an embedding, and store the embeddings in a vector database.  \n2. **Chunk** – A chunk is a short piece of a document, such as a few paragraphs.  \n3. **Embedding** – An embedding is a list of numbers that represents the meaning of a piece of text. Texts with similar meaning have embeddings that are close to each other.  \n4. **Vector database** – This is a simple storage that holds the numeric lists (embeddings) and can quickly compare them.  \n5. **Similarity search** – This means looking for embeddings that are close to the query embedding, i.e., that have similar meaning.  \n6. **Query embedding** – When a user asks a question, we turn the question into its own embedding.  \n7. **Retrieval** – The vector database uses similarity search to find the chunks whose embeddings are most similar to the question embedding.  \n8. **Prompt** – A prompt is the text that is sent to the AI as its input. We place the retrieved chunks together with the original question to form a prompt.  \n9. **Generation** – The AI reads the prompt and writes an answer that uses the retrieved information.  \n\n## Example  \n### Example 1: College scholarship update (Indian context)  \nA student asks, “What are the eligibility criteria for the 2024 PM Scholarship?”  \nThe system first searches a database that contains the latest government scholarship PDFs.  \nIt finds a chunk that lists the 2024 criteria.  \nThe chunk and the question are combined into a prompt.  \nThe AI replies with the exact criteria and also shows the paragraph it used.  \n\n### Example 2: Railway app schedule change  \nA commuter asks the railway app, “What is the new departure time for Train 12422 from Mumbai to Delhi?”  \nThe app’s RAG system looks at the latest timetable files uploaded by Indian Railways.  \nIt retrieves the chunk that mentions Train 12422’s new time.  \nThe AI then answers, “The train now departs at 22:15 from Mumbai Central.”  \n\n### Analogy  \nThink of RAG as a librarian who first fetches the right books, then reads the relevant pages to you, instead of guessing from memory.  \n\n### Limitation  \nIf the retrieval step returns the wrong or incomplete chunks, the final answer will also be wrong or incomplete.  \n\n## Recap  \n- RAG stands for Retrieval‑Augmented Generation.  \n- It first finds relevant text, then adds it to the AI’s input, then produces an answer.  \n- The method lets the AI use up‑to‑date and private documents without retraining.  \n- An embedding is a numeric list that captures meaning; a vector database stores these lists.  \n- Similarity search finds embeddings that are close in meaning.  \n- The quality of the retrieved chunks strongly influences the final answer.  \n\n## Check Yourself  \n1. What does the “retrieval” part of RAG do?  \n2. Why can RAG reduce hallucination compared to a plain AI model?  \n3. What happens if the retrieved chunks are incorrect?\n",
+    "status": "PASSED"
+  },
+  "usage": {
+    "calls": 4,
+    "prompt_tokens": 7838,
+    "completion_tokens": 4668
+  }
+}
